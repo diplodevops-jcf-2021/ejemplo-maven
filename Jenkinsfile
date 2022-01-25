@@ -25,7 +25,7 @@ pipeline {
         }
         stage("Test-app") {
             steps {
-                sh "curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=porfin'"
+                sh "curl -X GET 'http://localhost:8181/rest/mscovid/test?msg=porfin'"
             }
         }
         stage("nexus"){
