@@ -29,22 +29,24 @@ pipeline {
             }
         }
         stage("nexus"){
-            nexusPublisher nexusInstanceId: 'server-nexus',
-            nexusRepositoryId: 'maven_M3S10',
-            packages: [
-                [
-                    $class: 'MavenPackage',
-                    mavenAssetList: [
-                        [classifier: '', extension: '', filePath: "${env.WORKSPACE}/build/libs/DevOpsUsach2020-0.0.1.jar"]
-                    ],
-                    mavenCoordinate: [
-                        artifactId: 'DevOpsUsach2020',
-                        groupId: 'com.devopsusach2020',
-                        packaging: 'jar',
-                        version: '0.0.1'
+            steps{
+                nexusPublisher nexusInstanceId: 'server-nexus',
+                nexusRepositoryId: 'maven_M3S10',
+                packages: [
+                    [
+                        $class: 'MavenPackage',
+                        mavenAssetList: [
+                            [classifier: '', extension: '', filePath: "${env.WORKSPACE}/build/libs/DevOpsUsach2020-0.0.1.jar"]
+                        ],
+                        mavenCoordinate: [
+                            artifactId: 'DevOpsUsach2020',
+                            groupId: 'com.devopsusach2020',
+                            packaging: 'jar',
+                            version: '0.0.1'
+                        ]
                     ]
                 ]
-            ]
+            }
         }
     }
 }
